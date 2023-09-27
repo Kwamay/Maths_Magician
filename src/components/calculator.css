@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  background-color: gray;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  width: 600px;
+  grid-gap: 0.5px;
+  margin: 6rem auto;
+}
+
+.row button {
+  border: solid 0.5px rgb(237, 237, 240);
+  font-size: large;
+  font-weight: 700;
+}
+
+.row button:hover {
+  background-color: rgb(27, 207, 207);
+  color: white;
+}
+
+.row button:active {
+  background-color: rgb(15, 96, 96);
+  color: white;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row button:not(.full) {
+  width: 100%;
+  background-color: lightgray;
+  color: black;
+  text-align: center;
+  margin: auto;
+  padding: 1rem;
+}
+
+.row button:last-child {
+  background-color: rgb(255, 123, 0);
+}
