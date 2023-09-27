@@ -9,18 +9,14 @@ const Calculator = () => {
   };
   const [result, setResult] = useState(initialDisplay);
 
-  const calculate = () => {
-  };
+  const calculate = () => {};
 
   const handleClick = () => {
-    // const buttonName = e.target.textContent;
-    // setResult(calculate(buttonName));
     setResult(calculate());
   };
 
   return (
     <div className="container">
-      {/* <Button data={result.next || result.total || '0'} /> */}
       <button type="button" className="button">
         {result.next || result.total || '0'}
         {' '}
