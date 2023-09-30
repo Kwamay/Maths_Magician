@@ -15,7 +15,6 @@ const Calculator = () => {
   };
   const result = `${total || ''}${operation || ''}${next || ''}`;
 
-  
   return (
     <div className="container">
       <button type="button" className="button">
