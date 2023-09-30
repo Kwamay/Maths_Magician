@@ -1,92 +1,53 @@
 import React, { useState } from 'react';
 import './calculator.css';
+import calculate from '../logic/calculate';
 
 const Calculator = () => {
-  const initialDisplay = {
-    total: '',
-    next: null,
+  const [initState, setInitState] = useState({
+    total: 0,
     operation: null,
+    next: null,
+  });
+  const { total, operation, next } = initState;
+  const clickfunc = (e) => {
+    const result = e.target.value;
+    setInitState((prevState) => calculate(prevState, result));
   };
-  const [result, setResult] = useState(initialDisplay);
-
-  const calculate = () => {};
-
-  const handleClick = () => {
-    setResult(calculate());
-  };
+  const result = `${total || ''}${operation || ''}${next || ''}`;
 
   return (
     <div className="container">
       <button type="button" className="button">
-        {result.next || result.total || '0'}
-        {' '}
+        {result}
       </button>
       <div className="row">
-        <button type="button" onClick={handleClick}>
-          AC
-        </button>
-        <button type="button" onClick={handleClick}>
-          +/-
-        </button>
-        <button type="button" onClick={handleClick}>
-          %
-        </button>
-        <button type="button" onClick={handleClick}>
-          ÷
-        </button>
+        <input type="button" value="AC" onClick={clickfunc} />
+        <input type="button" value="+/-" onClick={clickfunc} />
+        <input type="button" value="%" onClick={clickfunc} />
+        <input className="orange" type="button" value="÷" onClick={clickfunc} />
       </div>
       <div className="row">
-        <button type="button" onClick={handleClick}>
-          7
-        </button>
-        <button type="button" onClick={handleClick}>
-          8
-        </button>
-        <button type="button" onClick={handleClick}>
-          9
-        </button>
-        <button type="button" onClick={handleClick}>
-          x
-        </button>
+        <input type="button" value="7" onClick={clickfunc} />
+        <input type="button" value="8" onClick={clickfunc} />
+        <input type="button" value="9" onClick={clickfunc} />
+        <input className="orange" type="button" value="x" onClick={clickfunc} />
       </div>
       <div className="row">
-        <button type="button" onClick={handleClick}>
-          4
-        </button>
-        <button type="button" onClick={handleClick}>
-          5
-        </button>
-        <button type="button" onClick={handleClick}>
-          6
-        </button>
-        <button type="button" onClick={handleClick}>
-          -
-        </button>
+        <input type="button" value="4" onClick={clickfunc} />
+        <input type="button" value="5" onClick={clickfunc} />
+        <input type="button" value="6" onClick={clickfunc} />
+        <input className="orange" type="button" value="-" onClick={clickfunc} />
       </div>
       <div className="row">
-        <button type="button" onClick={handleClick}>
-          1
-        </button>
-        <button type="button" onClick={handleClick}>
-          2
-        </button>
-        <button type="button" onClick={handleClick}>
-          3
-        </button>
-        <button type="button" onClick={handleClick}>
-          +
-        </button>
+        <input type="button" value="1" onClick={clickfunc} />
+        <input type="button" value="2" onClick={clickfunc} />
+        <input type="button" value="3" onClick={clickfunc} />
+        <input className="orange" type="button" value="+" onClick={clickfunc} />
       </div>
       <div className="row">
-        <button type="button" onClick={handleClick}>
-          0
-        </button>
-        <button type="button" onClick={handleClick}>
-          .
-        </button>
-        <button type="button" onClick={handleClick}>
-          =
-        </button>
+        <input className="span" type="button" value="0" onClick={clickfunc} />
+        <input type="button" value="." onClick={clickfunc} />
+        <input className="orange" type="button" value="=" onClick={clickfunc} />
       </div>
     </div>
   );
