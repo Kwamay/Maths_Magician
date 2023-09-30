@@ -23,7 +23,7 @@
 }
 
 .row button:hover {
-  background-color: rgb(27, 207, 207);
+  border: 2px dotted #242424;
   color: white;
 }
 
@@ -47,5 +47,5 @@
 }
 
 .row button:last-child {
-  background-color: rgb(255, 123, 0);
+  background-color: #f79505;
 }
