@@ -16,18 +16,18 @@
   margin: 6rem auto;
 }
 
-.row button {
+.row input {
   border: solid 0.5px rgb(237, 237, 240);
   font-size: large;
   font-weight: 700;
 }
 
-.row button:hover {
+.row input:hover {
   border: 2px dotted #242424;
   color: white;
 }
 
-.row button:active {
+.row input:active {
   background-color: rgb(15, 96, 96);
   color: white;
 }
@@ -37,7 +37,7 @@
   justify-content: space-between;
 }
 
-.row button:not(.full) {
+.row input:not(.full) {
   width: 100%;
   background-color: lightgray;
   color: black;
@@ -46,6 +46,6 @@
   padding: 1rem;
 }
 
-.row button:last-child {
+.row input:last-child {
   background-color: #f79505;
 }
