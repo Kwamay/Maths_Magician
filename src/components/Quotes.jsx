@@ -4,6 +4,7 @@ import './Navbar.css';
 const Quotes = () => {
   const [quote, setQuote] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const apiKey = 'GvOQshMcCXvn/q1dlbv2lA==YGpct0k5i11OyNEg';
@@ -19,30 +20,44 @@ const Quotes = () => {
 
     // Fetch the quote from the API with headers
     fetch(apiUrl, { headers })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        return response.json();
+      })
       .then((data) => {
         // Set the quote and mark loading as false when fetch is finished
         setQuote(data[0].quote);
         setIsLoading(false);
       })
       .catch((error) => {
-        <p>{error}</p>;
+        setError(error.message); // Set the error message
         setIsLoading(false);
       });
   }, []);
 
-  return (
-    <div>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          <h2>Quote of the Day</h2>
-          <p>{quote}</p>
-        </div>
-      )}
-    </div>
-  );
+  let content;
+
+  if (isLoading) {
+    content = <p>Loading...</p>;
+  } else if (error) {
+    content = (
+      <div>
+        <h2>Error</h2>
+        <p>{error}</p>
+      </div>
+    );
+  } else {
+    content = (
+      <div>
+        <h2>Quote of the Day</h2>
+        <p>{quote}</p>
+      </div>
+    );
+  }
+
+  return <div>{content}</div>;
 };
 
 export default Quotes;
