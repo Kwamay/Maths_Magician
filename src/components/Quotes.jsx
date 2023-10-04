@@ -51,7 +51,7 @@ const Quotes = () => {
   } else {
     content = (
       <div>
-        <h2>Quote of the Day</h2>
+        <h2>Quote of the Day!</h2>
         <p>{quote}</p>
       </div>
     );
